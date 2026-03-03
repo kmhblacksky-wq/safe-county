@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="생명존중안심마을은 읍·면·동 단위에서 지역의 다양한 기관·단체가 함께 참여해 자살예방 안전망을 만드는 지역사회 기반 사업입니다." />
+  <title>생명존중안심마을 | 지역사회 자살예방 안전망</title>
+  <style>
+
+    :root{
+      --bg:#f7fbf9;
+      --paper:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e7efe9;
+
+      --g:#0a8f3a;
+      --g2:#19a85a;
+      --g-soft:#e8f6ee;
+      --g-weak: rgba(10,143,58,.12);
+
+      --pink:#f59ab3;
+      --mint:#7bd5c7;
+      --purple:#b78bf3;
+      --orange:#ff8c42;
+      --yellow:#ffd85e;
+
+      --radius:28px;
+      --radius-sm:18px;
+      --shadow: 0 14px 34px rgba(17,24,39,.08);
+      --shadow-soft: 0 10px 24px rgba(17,24,39,.06);
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 10% 8%, rgba(10,143,58,.10), transparent 60%),
+        radial-gradient(760px 360px at 90% 18%, rgba(25,168,90,.08), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #ffffff 100%);
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    header::before{
+      content:"";
+      display:block;
+      height:4px;
+      background:linear-gradient(90deg, var(--g), var(--g2));
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:42px; height:42px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--g), var(--g2));
+      box-shadow: 0 10px 18px rgba(10,143,58,.18);
+      display:grid; place-items:center;
+      font-weight:1000;
+      color:#fff;
+    }
+    .brand strong{display:block; font-size:14px; letter-spacing:-.2px}
+    .brand span{display:block; font-size:12px; color:var(--muted)}
+
+    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:10px; align-items:center}
+    nav a{
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      border:1px solid transparent;
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+    nav a:hover{color:var(--text); border-color:var(--line); background:#f8fafc}
+
+    .nav-actions{display:flex; gap:10px; align-items:center}
+
+    .btn{
+      appearance:none;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:900;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      box-shadow: 0 8px 18px rgba(17,24,39,.05);
+      cursor:pointer;
+    }
+    .btn:hover{background:#f9fafb}
+    .btn.primary{
+      border-color:transparent;
+      color:#fff;
+      background:linear-gradient(135deg, var(--g), var(--g2));
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.02)}
+    .btn.good{
+      border-color:transparent;
+      color:#0b6b2c;
+      background:linear-gradient(135deg, rgba(123,213,199,.92), rgba(25,168,90,.20));
+    }
+
+    .hamburger{display:none}
+
+    /* Hero */
+    .hero{padding:34px 0 14px}
+    .hero-grid{display:grid; grid-template-columns: 1.15fr .85fr; gap:22px; align-items:stretch}
+    .hero h1{margin:0 0 10px; line-height:1.15; letter-spacing:-.9px; font-size:42px}
+    .hero p{margin:0 0 18px; color:var(--muted); font-size:15px}
+
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(10,143,58,.18);
+      background:var(--g-soft);
+      color:#0b6b2c;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--g); box-shadow:0 0 0 6px rgba(10,143,58,.12)}
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, #ffffff 0%, #f6fbf8 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card{padding:18px; position:relative; overflow:hidden}
+    .hero-card h2{margin:0 0 6px; font-size:16px}
+    .hero-card p{margin:0 0 14px; color:var(--muted); font-size:13px}
+    .hero-card .mascot-hero{
+      width:180px;
+      height:auto;
+      position:absolute;
+      right:-16px;
+      bottom:-10px;
+      filter: drop-shadow(0 18px 24px rgba(17,24,39,.12));
+      opacity:.98;
+      pointer-events:none;
+      user-select:none;
+      transform: rotate(1deg);
+    }
+    .callouts{display:grid; gap:10px; position:relative; z-index:1}
+    .callout{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px;
+      background:#fff;
+      box-shadow: 0 10px 18px rgba(17,24,39,.04);
+    }
+    .callout strong{display:block; font-size:13px}
+    .callout small{display:block; color:var(--muted)}
+
+    .hero-actions{display:flex; flex-wrap:wrap; gap:10px}
+
+    /* Sections */
+    section{padding:34px 0}
+    .section-head{display:flex; justify-content:space-between; gap:14px; align-items:flex-end; margin-bottom:14px}
+    .section-head h2{margin:0; font-size:22px; letter-spacing:-.3px}
+    .section-head p{margin:0; color:var(--muted); max-width:70ch; font-size:14px}
+
+    .grid{display:grid; gap:14px}
+    .grid.cards{grid-template-columns: repeat(3, 1fr)}
+    .grid.twocol{grid-template-columns: 1fr 1fr}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--paper);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:-.2px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px;
+      color:#0b6b2c;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(10,143,58,.18);
+      background:var(--g-soft);
+      margin-bottom:10px;
+      font-weight:900;
+    }
+    .icon{
+      width:28px; height:28px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      background:rgba(10,143,58,.10);
+      border:1px solid rgba(10,143,58,.16);
+      color:#0b6b2c;
+      font-weight:1000;
+    }
+
+    /* Activities mascot minis */
+    .mascot-mini{
+      width:92px;
+      height:auto;
+      position:absolute;
+      right:10px;
+      bottom:10px;
+      filter: drop-shadow(0 14px 18px rgba(17,24,39,.10));
+      opacity:.98;
+      pointer-events:none;
+      user-select:none;
+      transform: rotate(-1deg);
+    }
+
+    /* Steps */
+    .steps{display:grid; gap:10px}
+    .step{
+      display:flex; gap:12px;
+      align-items:flex-start;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px;
+      background:#fff;
+      box-shadow: 0 10px 18px rgba(17,24,39,.04);
+    }
+    .step .num{
+      min-width:34px; height:34px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background:rgba(25,168,90,.10);
+      border:1px solid rgba(25,168,90,.16);
+      color:#0b6b2c;
+      font-weight:1000;
+    }
+    .step strong{display:block; font-size:14px; margin-bottom:4px}
+    .step span{display:block; color:var(--muted); font-size:13px}
+
+    /* FAQ */
+    .faq{display:grid; gap:10px}
+    details{
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:#fff;
+      padding:12px 14px;
+      box-shadow: 0 10px 18px rgba(17,24,39,.04);
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight:1000;
+      color:var(--text);
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{transition: transform .2s ease; color:var(--muted)}
+    details[open] .chev{transform:rotate(180deg)}
+    details p{margin:10px 0 0; color:var(--muted); font-size:13px}
+
+    /* Crisis */
+    .crisis{
+      background:linear-gradient(180deg, rgba(255,216,94,.22), rgba(255,255,255,1));
+      border:1px solid rgba(255,216,94,.55);
+    }
+    .crisis .kicker{color:#7a5a00; font-weight:1000; letter-spacing:-.2px}
+    .crisis .hotlines{display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; margin-top:12px}
+    .hotline{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:12px;
+      background:#fff;
+      box-shadow: 0 10px 18px rgba(17,24,39,.04);
+    }
+    .hotline strong{display:block}
+    .hotline a{color:var(--text); text-decoration:none}
+    .hotline a:hover{text-decoration:underline}
+    .hotline small{display:block; color:var(--muted)}
+
+    footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+    }
+    footer .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    footer a{color:var(--muted)}
+    footer a:hover{color:var(--text)}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .grid.cards{grid-template-columns: repeat(2, 1fr)}
+      .crisis .hotlines{grid-template-columns: 1fr}
+      .hero h1{font-size:36px}
+      .hero-card .mascot-hero{width:160px}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .grid.cards{grid-template-columns: 1fr}
+      .grid.twocol{grid-template-columns: 1fr}
+      .hero h1{font-size:30px}
+      .hero-card .mascot-hero{width:140px}
+    }
+
+    /* Mobile menu */
+    .mobile{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:12px 0 16px;
+      background:#fff;
+    }
+    .mobile a{display:block; padding:10px 12px; border-radius:14px; text-decoration:none; color:var(--muted); font-weight:900}
+    .mobile a:hover{color:var(--text); background:#f8fafc}
+    .mobile.show{display:block}
+
+    /* Utility */
+    .muted{color:var(--muted)}
+    .spacer{height:6px}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+
+  /* --- Added: grouped participation pills (image-like) --- */
+.section-mini-title{
+  font-weight:1000;
+  margin:0 0 12px;
+  letter-spacing:-.3px;
+  color: var(--text, #1f2937);
+  font-size:14px;
+}
+.grouped{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap:12px;
+  align-items:center;
+  margin:10px 0;
+}
+.g-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:1000;
+  color:#fff;
+  background: linear-gradient(135deg, var(--g, #0a8f3a), var(--g2, #19a85a));
+  box-shadow: 0 10px 18px rgba(17,24,39,.06);
+  width:100%;
+}
+.g-outline{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:900;
+  color:#0b6b2c;
+  background:#fff;
+  border:2px solid rgba(10,143,58,.28);
+  width:100%;
+}
+@media (max-width:720px){
+  .grouped{grid-template-columns: 1fr; gap:8px;}
+  .g-pill,.g-outline{width:100%;}
+}
+
+/* --- Added: 2023 suicide rate bars --- */
+.bars{display:grid; gap:12px;}
+.barrow{
+  display:grid;
+  grid-template-columns: 92px 1fr 64px;
+  gap:10px;
+  align-items:center;
+}
+.barlabel{font-weight:1000;}
+.bartrack{
+  height:14px;
+  border-radius:999px;
+  background:#eef2f7;
+  border:1px solid var(--line, #e7efe9);
+  overflow:hidden;
+}
+.barfill{
+  height:100%;
+  border-radius:999px;
+  background: linear-gradient(90deg, rgba(10,143,58,.45), rgba(25,168,90,.95));
+}
+.barvalue{font-weight:1000; text-align:right;}
+.barfoot{
+  color: var(--muted, #6b7280);
+  font-size:12px;
+  line-height:1.5;
+  margin-top:4px;
+}
+
+/* --- Added: risk sign pills --- */
+.riskpill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:1000;
+  color:#fff;
+  background: linear-gradient(135deg, var(--g, #0a8f3a), var(--g2, #19a85a));
+  width:100%;
+  margin-bottom:12px;
+}
+.risklist{margin:0; padding-left:18px; color: var(--muted, #6b7280);}
+.risklist li{margin:6px 0;}
+
+
+/* --- Fix: hero accent visibility & wrapping --- */
+.accent-nowrap{
+  color: var(--g, #0a8f3a);
+  font-weight: 1000;
+  white-space: nowrap;
+}
+.title{
+  word-break: keep-all;
+}
+
+/* --- Fix: hero title accent + no awkward wrap --- */
+.hero-title{word-break: keep-all;}
+.accent-word{color: var(--g, #0a8f3a) !important; font-weight: 1000; white-space: nowrap;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav" role="navigation" aria-label="주요 메뉴">
+        <a class="brand" href="#top">
+          <div class="logo" aria-hidden="true">♥</div>
+          <div>
+            <strong>생명존중안심마을</strong>
+            <span>지역사회 자살예방 안전망</span>
+          </div>
+        </a>
+
+        <nav aria-label="섹션 이동">
+          <ul>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#activities">핵심활동</a></li>
+            <li><a href="#join">참여</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#help">도움받기</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="btn hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">메뉴</button>
+          <a class="btn" href="#join">기관·단체 참여</a>
+          <a class="btn primary" href="#help">도움이 필요해요</a>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="mobile" role="navigation" aria-label="모바일 메뉴">
+        <a href="#about">소개</a>
+        <a href="#activities">핵심활동</a>
+        <a href="#join">참여</a>
+        <a href="#faq">FAQ</a>
+        <a href="#help">도움받기</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="pill"><span class="dot" aria-hidden="true"></span> 읍·면·동 단위로 함께 만드는 생명안전망</div>
+            <h1 class="hero-title">따뜻한 관심을 <span class="accent-word">연결</span>로 바꾸는 마을</h1>
+            <p>
+              <b>생명존중안심마을</b>은 지역의 기관·단체가 함께 참여하여 <b>자살위기에 처한 주민을 조기에 발견</b>하고, <b>전문기관에 의뢰·연계</b>하며,
+              교육·캠페인·환경개선을 통해 <b>지역사회 자살예방 안전망</b>을 구축하는 사업임.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#activities">5가지 핵심활동 보기</a>
+              <a class="btn" href="#join">참여 방법 확인</a>
+              <a class="btn good" href="#help">지금 상담/연결</a>
+            </div>
+
+            <div class="spacer"></div>
+            <p class="muted" style="font-size:12px; margin-top:10px;">
+              ※ 본 페이지는 정보 제공 목적이며, 위급한 상황에서는 즉시 112/119 또는 109(자살예방상담전화)로 연락하시기 바람.
+            </p>
+          </div>
+
+          <aside class="panel hero-card" aria-label="빠른 안내">
+            <h2>빠른 안내</h2>
+            <p>기관 참여/연계 흐름과 도움받기 정보를 한눈에 정리했음.</p>
+            <div class="callouts">
+              <div class="callout">
+                <strong>누가 참여할 수 있나요?</strong>
+                <small>지역 내 기관·단체라면 누구나(보건의료/교육/복지/지역사회/공공기관 등).</small>
+              </div>
+              <div class="callout">
+                <strong>무엇을 하나요?</strong>
+                <small>고위험군 조기발굴·연계, 인식개선, 교육, 맞춤지원, 수단차단 등 5대 활동.</small>
+              </div>
+              <div class="callout">
+                <strong>어디로 연결되나요?</strong>
+                <small>지역 정신건강복지센터/자살예방센터 등 전문기관과 협력·연계.</small>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="stats">
+  <div class="section-head">
+    <div>
+      <h2>2023년 자살률</h2>
+      <p>10만명당 자살자 수(첨부 이미지 기준 수치).</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="bars" role="img" aria-label="2023년 자살률 막대 그래프">
+      <div class="barrow">
+        <div class="barlabel">전국평균</div>
+        <div class="bartrack"><div class="barfill" style="width:68.6%"></div></div>
+        <div class="barvalue">27.39</div>
+      </div>
+
+      <div class="barrow">
+        <div class="barlabel">대구광역시</div>
+        <div class="bartrack"><div class="barfill" style="width:70.4%"></div></div>
+        <div class="barvalue">28.1</div>
+      </div>
+
+      <div class="barrow" style="margin-bottom:6px;">
+        <div class="barlabel">대구서구</div>
+        <div class="bartrack"><div class="barfill" style="width:88.6%"></div></div>
+        <div class="barvalue"><b>35.4</b></div>
+      </div>
+
+      <div class="barfoot">
+        전국평균 : 10만명당 27.39명 (총 13,978명)<br />
+        대구광역시 : 10만명당 28.1명 (총 666명)<br />
+        대구 서구 : 10만명당 35.4명 (총 57명)
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+        <div class="section-head">
+          <div>
+            <h2>생명존중안심마을이란</h2>
+            <p>
+              지역의 다양한 자원을 활용해 <b>자살예방을 위한 핵심 활동을 읍·면·동 단위로 추진</b>하고, 위기 신호를 <b>조기에 발견</b>하여 <b>전문기관에 의뢰·연계</b>하는
+              지역사회 기반 안전망임.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid twocol">
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">①</span> 목적</div>
+            <h3>지역 안에서 “발견–연결–지지”가 자연스럽게 일어나도록</h3>
+            <p>
+              주민의 위기 신호를 더 빨리 알아차리고, 도움을 받을 수 있는 곳(전문기관·복지·의료 등)으로
+              <b>끊기지 않게 연결</b>하여 안전을 높이는 데 초점을 둠.
+            </p>
+          </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">②</span> 원칙</div>
+            <h3>낙인 없이, 개인정보를 존중하며, 실질적인 지원으로</h3>
+            <p>
+              위기 상황은 누구에게나 발생할 수 있으며, ‘고위험군’이라는 표현은 <b>지원의 우선순위를 정하기 위한 실무 용어</b>임.
+              대상자 존엄과 비밀보장을 우선하되, 위급 시에는 안전을 위해 연계가 필요함.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="activities">
+        <div class="section-head">
+          <div>
+            <h2>5가지 핵심 활동</h2>
+            <p>지역에서 수행되는 대표 활동을 5개 축으로 정리했음(기관·단체는 여건에 맞게 참여 가능).</p>
+          </div>
+        </div>
+
+        <div class="grid cards">
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">🔎</span> 1</div>
+            <h3>고위험군 발굴·개입·연계</h3>
+            <p>위기 신호를 조기 발견하고, 상담·의료·복지 등 전문기관에 신속히 의뢰·연계함.</p>
+            </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">📣</span> 2</div>
+            <h3>자살예방 인식개선 캠페인</h3>
+            <p>생명존중 문화 확산을 위해 주민 대상 홍보·캠페인에 참여함.</p>
+            </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">🎓</span> 3</div>
+            <h3>자살예방교육</h3>
+            <p>기관 종사자·주민이 위기 신호를 이해하고 대응할 수 있도록 교육을 이수·확산함.</p>
+            </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">🤝</span> 4</div>
+            <h3>자살 고위험군 맞춤형 서비스 지원</h3>
+            <p>상담, 사례관리, 복지 서비스, 생활지원 등 지역 자원을 연계해 맞춤형 지원을 제공함.</p>
+            </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">🛡️</span> 5</div>
+            <h3>자살위험 수단 차단</h3>
+            <p>위험 환경(수단·장소 등)을 점검하고, 관리·개선 활동을 통해 접근성을 낮춤.</p>
+            </div>
+          <div class="card">
+            <div class="badge"><span class="icon" aria-hidden="true">✅</span> 참여</div>
+            <h3>작게 시작해도 충분함</h3>
+            <p>교육 이수 1회, 캠페인 참여 1회처럼 가능한 범위부터 시작해 지역의 연결망을 넓혀감.</p>
+            </div>
+        </div>
+      </section>
+
+      <section id="join">
+        <div class="section-head">
+          <div>
+            <h2>기관·단체 참여 안내</h2>
+            <p>
+              생명존중안심마을은 특정 기관만의 사업이 아니라, 지역의 일상적 접점(의료·교육·복지·상점·공공기관 등)에서
+              위기 신호를 놓치지 않도록 <b>협력 구조를 만드는 것</b>이 핵심임.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid twocol">
+<div class="card">
+  <div class="section-mini-title">5개 영역 참여 기관</div>
+
+  <div class="grouped">
+    <div class="g-left"><span class="g-pill">보건의료</span></div>
+    <div class="g-right"><span class="g-outline">보건소, 병·의원, 한의원, 약국 등</span></div>
+  </div>
+
+  <div class="grouped">
+    <div class="g-left"><span class="g-pill">교육</span></div>
+    <div class="g-right"><span class="g-outline">초·중·고·대학교, Wee센터, 학원 등</span></div>
+  </div>
+
+  <div class="grouped">
+    <div class="g-left"><span class="g-pill">복지</span></div>
+    <div class="g-right"><span class="g-outline">사회복지사업법에 따른 사회복지시설 등</span></div>
+  </div>
+
+  <div class="grouped">
+    <div class="g-left"><span class="g-pill">지역사회</span></div>
+    <div class="g-right"><span class="g-outline">종교단체, 부녀회, 숙박업소, 마트 등</span></div>
+  </div>
+
+  <div class="grouped" style="margin-bottom:0;">
+    <div class="g-left"><span class="g-pill">공공서비스</span></div>
+    <div class="g-right"><span class="g-outline">행정복지센터, 지구대, 소방서 등</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="badge"><span class="icon" aria-hidden="true">🧭</span> 운영 흐름</div>
+  <h3>현장에서의 “연결”을 쉽게</h3>
+
+  <div class="steps" aria-label="운영 흐름">
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <strong>준비</strong>
+        <span>담당자 지정, 교육 이수, 내부 안내(연락처/절차) 정비</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <strong>발견</strong>
+        <span>위기 신호 관찰, 필요 시 간단한 확인 및 경청</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <strong>연계</strong>
+        <span>지역 정신건강복지센터/자살예방센터 등 전문기관에 의뢰·연결</span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <strong>지원·관리</strong>
+        <span>맞춤 서비스 연결, 사후 확인(가능 범위 내), 재위기 예방</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+  <div class="hero-actions">
+    <a class="btn" href="#help">긴급/상담 연락처 보기</a>
+    <a class="btn primary" href="https://www.kfsp.or.kr/" target="_blank" rel="noopener">재단(자료/기관검색) 바로가기</a>
+  </div>
+</div>
+</div>
+      </section>
+
+      <section id="faq">
+        <div class="section-head">
+          <div>
+            <h2>자주 묻는 질문</h2>
+            <p>현장에서 자주 나오는 질문을 기준으로 정리했음(지역 운영 기준은 지자체/센터 안내에 따름).</p>
+          </div>
+        </div>
+
+        <div class="faq" aria-label="FAQ">
+          <details>
+            <summary>Q. ‘생명존중안심마을’은 치매안심센터/정신건강복지센터와 같은 기관인가요?
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <p>
+              A. 특정 기관이 아니라 <b>지역 단위 협력체계</b>임. 주민 접점 기관들이 위기 신호를 조기에 발견하고
+              <b>전문기관(정신건강복지센터, 자살예방센터 등)</b>으로 의뢰·연계하여 안전망을 강화하는 방식임.
+            </p>
+          </details>
+
+          <details>
+            <summary>Q. 우리 기관은 전문상담을 할 수 없는데 참여가 가능한가요?
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <p>
+              A. 가능함. 핵심은 ‘상담을 대신하는 것’이 아니라 <b>위기 신호를 놓치지 않고 연결</b>하는 것임.
+              교육 이수, 캠페인 참여, 연계 절차 마련 등 가능한 범위부터 시작할 수 있음.
+            </p>
+          </details>
+
+          <details>
+            <summary>Q. 개인정보나 비밀보장은 어떻게 되나요?
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <p>
+              A. 원칙적으로 비밀보장을 우선하되, 위험도가 높은 경우에는 안전을 위해 동의를 기반으로 연계하거나,
+              위급 상황에서는 즉시 112/119 등 긴급 도움을 요청할 수 있음.
+            </p>
+          </details>
+
+          <details>
+            <summary>Q. 주민이 ‘죽고 싶다’고 말하면 어떻게 해야 하나요?
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <p>
+              A. 먼저 <b>안전 확인</b>(현재 위험/계획/수단 접근 여부)과 <b>경청·공감</b>이 중요함.
+              혼자 해결하려 하기보다 즉시 <b>109(자살예방상담전화)</b> 또는 지역 전문기관(정신건강복지센터/자살예방센터)로 연결하는 것이 권장됨.
+              현재 즉각적 위험이 의심되면 112/119로 연락하시기 바람.
+            </p>
+          </details>
+<details>
+  <summary>Q. 자살 위기에 있는 사람이 보이는 신호가 있나요?
+    <span class="chev" aria-hidden="true">▾</span>
+  </summary>
+  <p>
+  A. 일부 위험 신호는 <b>언어(말)</b>, <b>행동</b>, <b>상황 변화</b>에서 나타날 수 있음.
+  아래 항목이 <b>반복</b>되거나 <b>강화</b>될수록 즉시 전문기관과 연결이 필요함.
+  특히 구체적인 계획·수단 준비가 의심되면 112/119 또는 109로 즉시 도움을 요청하시기 바람.
+</p>
+<div class="grid three">
+  <div class="card">
+    <div class="riskpill">언어적</div>
+    <ul class="risklist">
+      <li>자살, 죽음 언급</li>
+      <li>신체적 불편감 호소</li>
+      <li>자기비하</li>
+      <li>SNS, 노래 등</li>
+      <li>죽음에 관한 내용 기재</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="riskpill">행동적</div>
+    <ul class="risklist">
+      <li>평소와 다른 공격적·충동적 행동</li>
+      <li>신변정리</li>
+      <li>자살수단모으기</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="riskpill">상황적</div>
+    <ul class="risklist">
+      <li>신체·정신건강문제</li>
+      <li>경제적 어려움</li>
+      <li>학업·직장스트레스</li>
+      <li>관계문제</li>
+    </ul>
+  </div>
+</div>
+</details>
+        </div>
+      </section>
+
+      
+
+<section id="help">
+        <div class="section-head">
+          <div>
+            <h2>도움이 필요하신가요?</h2>
+            <p>
+              혼자 견디기 어려울 때, 지금 연결이 도움이 될 수 있음.
+              위급하거나 즉각적인 위험이 있다면 <b>112/119</b>를 우선 이용하시기 바람.
+            </p>
+          </div>
+        </div>
+
+        <div class="card crisis" role="region" aria-label="긴급 도움 연락처">
+          <div class="kicker">긴급/상담 연락처</div>
+          <div class="spacer"></div>
+          <div class="hotlines">
+            <div class="hotline">
+              <strong><a href="tel:109">자살예방상담전화 109</a></strong>
+              <small>24시간 자살예방 상담 및 연계</small>
+            </div>
+            <div class="hotline">
+              <strong><a href="tel:1577-0199">정신건강 상담전화 1577-0199</a></strong>
+              <small>24시간 정신건강 상담</small>
+            </div>
+            <div class="hotline">
+              <strong><a href="tel:1588-9191">생명의 전화 1588-9191</a></strong>
+              <small>24시간 상담(기관 운영 안내에 따름)</small>
+            </div>
+            <div class="hotline">
+              <strong><a href="tel:112">112 / <a href="tel:119">119</a></a></strong>
+              <small>긴급 상황(즉각적 위험, 응급 출동 필요 시)</small>
+            </div>
+            <div class="hotline">
+              <strong><a href="tel:1388">청소년전화 1388</a></strong>
+              <small>24시간 청소년 상담</small>
+            </div>
+            <div class="hotline">
+              <strong><a href="tel:1366">여성긴급전화 1366</a></strong>
+              <small>폭력·위기 상황 지원</small>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+          <p class="muted" style="margin:0; font-size:12px;">
+            ※ 위 번호는 대한민국 기준이며, 지역에 따라 연계 기관이 달라질 수 있음.
+            지역 정신건강복지센터/자살예방센터는 재단 사이트(기관 검색)에서 확인 가능함.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <div>
+          <b>자료/기관 링크</b>
+          <div class="links">
+            <a href="https://www.kfsp.or.kr/" target="_blank" rel="noopener">한국생명존중희망재단</a>
+            <a href="https://www.129.go.kr/109" target="_blank" rel="noopener">자살예방상담전화 109 안내(129)</a>
+            <a href="https://www.mohw.go.kr/" target="_blank" rel="noopener">보건복지부</a>
+            <a href="https://www.suicideprevention.or.kr/" target="_blank" rel="noopener">자살예방정보(포털)</a>
+          </div>
+          <div class="spacer"></div>
+          <div>
+            © <span id="year"></span> Life Respect Safety Village. 이 페이지는 예시(템플릿)이며, 지역 운영 지침/문의처는 각 지자체 및 센터 공지를 따르시기 바람.
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('show');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close menu on click
+    menu?.querySelectorAll('a')?.forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('show');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Improve details behavior on mobile: only one open at a time (optional)
+    const faqs = document.querySelectorAll('section#faq details');
+    faqs.forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          faqs.forEach(other => {
+            if (other !== d) other.open = false;
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
